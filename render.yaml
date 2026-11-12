@@ -1,9 +1,16 @@
 services:
   - type: web
-    name: my-telegram-bot
-    env: python
+    name: rajfflive-api
+    runtime: python
+    plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: ./start.sh
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT --timeout-keep-alive 75
     envVars:
-      - key: BOT_TOKEN
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: SESSION_STRING
         sync: false
