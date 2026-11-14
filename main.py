@@ -1090,7 +1090,11 @@ async def admin_del_account(acc_id: int, _=Depends(require_admin)):
 # ===================================================================
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("userbot_api:app", host="0.0.0.0",
-                port=int(os.getenv("PORT", "8000")),
-                log_level=os.getenv("LOG_LEVEL", "info"),
-                limit_concurrency=500, timeout_keep_alive=30)
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", "8000")),
+        log_level=os.getenv("LOG_LEVEL", "info"),
+        limit_concurrency=500,
+        timeout_keep_alive=30
+    )
